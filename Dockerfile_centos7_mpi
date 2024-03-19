@@ -1,0 +1,3 @@
+FROM ghcr.io/seisscoped/container-base:centos7_mpi
+
+#   Add new layer here

@@ -1,0 +1,3 @@
+FROM ghcr.io/seisscoped/container-base:ubuntu22.04_jupyterlab
+
+#   Add new layer here
