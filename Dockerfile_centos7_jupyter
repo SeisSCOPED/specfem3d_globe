@@ -1,3 +1,0 @@
-FROM ghcr.io/seisscoped/container-base:centos7_jupyterlab
-
-#   Add new layer here
