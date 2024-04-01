@@ -1,15 +1,12 @@
-# Container Template
-This repository is a template repo for containers built on the [base containers](https://github.com/SeisSCOPED/container-base).
+# Docker files for Specfem3D_Globe images
+This repository contains Dockerfiles for creating Docker images preinstalled with Specfem3D_Globe and its dependencies including ADIOS2 and ASDF.
+The images are built on the [base containers](https://github.com/SeisSCOPED/container-base), which is prepared for using a specific version of IntelMPI with GNU libraries that are compatible with a run on NACC's HPC "Frontera" with Singularity.
+
+Below are the Dockerfiles for the images:
+- [Dockerfile](Dockerfile): A ubuntu20.04 based image with MPI, Specfem3D_Globe and Jupyter notebook.
+- [Dockerfile_mpi](Dockerfile_mpi): A ubuntu20.04 based image with MPI, Specfem3D_Globe but no Jupyer notebook.
+- [Dockerfile_centos7](Dockerfile_centos7): A centos7 based image with MPI, Specfem3D_Globe and Jupyter notebook.
+- [Dockerfile_centos7_mpi](Dockerfile_centos7_mpi): A centos7 based image with MPI, Specfem3D_Globe but no Jupyer notebook.
 
 
-There are multiple dockerfiles corresponding to the platforms and the utilities preinstalled, and they are triggered to build automatically when changes are made on the base containers. Here are the steps to build a new container repo from the base containers:
-
-
-1. Create a new repository: When creating a new repo, select "SeisSCOPED/container-template" as the repository template. The new repo will copy all the template dockerfiles and workflow files.
-
-
-2. Change the name of packages: In your new repo, go to .github/workflows, and set the environment variable "IMAGE_NAME" to an appropriate name for your images.
-
-
-3. Make changes: Add your new layers on the dockerfiles.
 
