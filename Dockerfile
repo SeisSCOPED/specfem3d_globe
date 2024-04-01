@@ -68,9 +68,6 @@ RUN git clone --recursive --branch devel https://github.com/SPECFEM/specfem3d_gl
 # add specfem3d_globe/bin to PATH
 ENV PATH=$PATH:/home/scoped/specfem3d_globe/bin
 
-
-
-
 # install necessary python packages for pre/post processing
 RUN conda config --prepend channels conda-forge \
     && conda install obspy \
