@@ -7,22 +7,21 @@ RUN yum install -y cmake3 boost-devel \
 WORKDIR /home/scoped
 
 # install HDF5 with parallel option (this uses gcc+intelmpi)
-RUN wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.13/hdf5-1.13.3/src/hdf5-1.13.3.tar.gz
-    #&& CC=mpicc CXX=mpicxx FC=mpif90 \
-RUN source ${MPIVARS_SCRIPT} \
+RUN wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.13/hdf5-1.13.3/src/hdf5-1.13.3.tar.gz \
+    && source ${MPIVARS_SCRIPT} \
     && tar -xvf hdf5-1.13.3.tar.gz \
     && cd hdf5-1.13.3 \
     && CC=mpicc ./configure --enable-fortran --enable-parallel --prefix=/home/scoped/hdf5 --enable-shared --enable-static \
     && make -j12 && make install \
     && cd .. && rm -rf hdf5-*
-#
+
 # HDF5_DIR for pypaw
 ENV HDF5_DIR=/home/scoped/hdf5
 # add hdf5 bin to PATH
 ENV PATH=$PATH:/home/scoped/hdf5/bin
 # add hdf5 lib to LD_LIBRARY_PATH
 ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/scoped/hdf5/lib
-#
+
 # install asdf-library
 # workaround to use gfortran with intel mpi (not a good engineering practice)
 RUN mv /opt/intel/compilers_and_libraries/linux/mpi/intel64/include/mpi.mod /opt/intel/compilers_and_libraries/linux/mpi/intel64/include/mpi.modbak \
@@ -63,7 +62,3 @@ RUN mkdir -p /home/scoped/sim_dir/OUTPUT_FILES \
     && mkdir -p /home/scoped/sim_dir/DATA \
     && mkdir -p /home/scoped/sim_dir/DATABASES_MPI \
     && cp -r /home/scoped/specfem3d_globe/DATA/* /home/scoped/sim_dir/DATA/
-
-# change home directory to /home/scoped/sim_dir
-#
-WORKDIR /home/scoped/sim_dir
