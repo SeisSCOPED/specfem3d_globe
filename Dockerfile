@@ -70,6 +70,7 @@ ENV PATH=$PATH:/home/scoped/specfem3d_globe/bin
 
 # install necessary python packages for pre/post processing
 RUN conda config --prepend channels conda-forge \
-    && conda install obspy \
+    && conda install obspy pandas \
+    && pip install git+https://github.com/adjtomo/pyadjoint.git \
     && conda clean -afy \
     && docker-clean
