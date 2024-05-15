@@ -22,7 +22,7 @@ env:
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   # CHANGE THE IMAGE NAME HERE
-  IMAGE_NAME: ${{github.repository}}
+  IMAGE_NAME: seisscoped/specfem3d_globe
 
 jobs:
   build-centos:
